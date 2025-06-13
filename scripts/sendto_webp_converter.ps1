@@ -1,5 +1,12 @@
 Add-Type -AssemblyName System.Windows.Forms
 
+# 引数チェック：引数が指定されていない場合はメッセージボックスを表示して終了
+if ($Args.Count -eq 0) {
+    $NoArgsMsg = "ファイルが選択されていません。"
+    [System.Windows.Forms.MessageBox]::Show($NoArgsMsg, "エラー", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+    exit
+}
+
 $supportedExtensions = @(".jpg", ".jpeg", ".png", ".tiff", ".tif")
 
 $ErrorFileName = @()
