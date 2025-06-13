@@ -30,7 +30,8 @@ git clone https://github.com/Natsugure/sendto-webp-converter.git
 ```
 
 ### 3. 「送る」メニューにバッチファイルを登録する
-エクスプローラのアドレスバーに``shell:sendto`を入力して移動。`scripts\sendto_webp_converter_laucher.bat`のショートカットを作成する。
+エクスプローラのアドレスバーに`shell:sendto`を入力して移動。
+`scripts\sendto_webp_converter_laucher.bat`のショートカットを作成する。
 `.lnk`のファイル名が「送る」メニュー内の表示名になるので、任意の名前に変更する。（例：WebPに変換）
 
 ### 4. 画像ファイルを選択して、「送る」メニューからスクリプトを起動する
