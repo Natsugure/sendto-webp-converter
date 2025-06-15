@@ -29,6 +29,10 @@ git clone https://github.com/Natsugure/sendto-webp-converter.git
 2. 「送る」→「WebPに変換」を選択
 3. 変換されたファイルは同じフォルダの「webp_output」に保存されます
 
+## アンインストール方法
+1. `uninstall.bat`を実行し、SendToフォルダのショートカットを削除します。
+2. スクリプトが含まれるフォルダを全てごみ箱に入れて削除します。
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
