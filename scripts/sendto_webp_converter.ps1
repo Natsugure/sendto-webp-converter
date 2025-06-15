@@ -1,5 +1,14 @@
 ﻿Add-Type -AssemblyName System.Windows.Forms
 
+$scriptDir = $PSScriptRoot
+$cwebpPath = Join-Path (Split-Path -Parent $scriptDir) "bin\cwebp.exe"
+
+if (-not (Test-Path $cwebpPath)) {
+    $NoCwebp = "cwebp.exeが見つかりません。: $cwebpPath"
+    [System.Windows.Forms.MessageBox]::Show($NoCwebp, "エラー", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+    exit
+}
+
 # 引数チェック：引数が指定されていない場合はメッセージボックスを表示して終了
 if ($Args.Count -eq 0) {
     $NoArgsMsg = "ファイルが選択されていません。"
@@ -45,7 +54,7 @@ foreach ($FilePath in $Args) {
         Write-Output "Output to: $GenerateFileName"
         
         try {
-            cwebp -preset photo -metadata icc -sharp_yuv -o $GenerateFileName -progress -short $FilePath
+            & $cwebpPath -preset photo -metadata icc -sharp_yuv -o $GenerateFileName -progress -short $FilePath
             Write-Output "Completed: $($FileItem.Name)"
             $ProcessedCount++
         } catch {
