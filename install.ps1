@@ -1,7 +1,7 @@
 ﻿[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "sendto-webp-converter インストーラー" -ForegroundColor Cyan
+Write-Host "SendTo Webp Converter インストーラー" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host
 
@@ -54,21 +54,12 @@ if (Test-Path $BinCwebpPath) {
     Write-Host "cwebp.exeが見つかりました。" -ForegroundColor Green
     Write-Host "パス: $BinCwebpPath" -ForegroundColor Cyan
 } else {
-    # binディレクトリにない場合はPATHを確認
-    $CwebpInPath = $null -ne (Get-Command cwebp.exe -ErrorAction SilentlyContinue)
-    
-    if ($CwebpInPath) {
-        Write-Host "cwebp.exeがシステムPATHに見つかりました。" -ForegroundColor Green
-    } else {
-        Write-Host "[エラー] cwebp.exeが見つかりません。" -ForegroundColor Red
-        Write-Host "以下のいずれかを確認してください:" -ForegroundColor Yellow
-        Write-Host "1. binディレクトリにcwebp.exeが配置されているか" -ForegroundColor Yellow
-        Write-Host "2. Google WebP ToolsがPATHに追加されているか" -ForegroundColor Yellow
-        Write-Host "   ダウンロード: https://developers.google.com/speed/webp/docs/precompiled?hl=ja" -ForegroundColor Cyan
-        Write-Host
-        Read-Host "Enterキーを押して終了..."
-        exit 1
-    }
+    Write-Host "[エラー] cwebp.exeが見つかりません。" -ForegroundColor Red
+    Write-Host "binディレクトリにcwebp.exeが配置されているかを確認してください。" -ForegroundColor Yellow
+    Write-Host "   ダウンロード: https://developers.google.com/speed/webp/docs/precompiled?hl=ja" -ForegroundColor Cyan
+    Write-Host
+    Read-Host "Enterキーを押して終了..."
+    exit 1
 }
 Write-Host
 
