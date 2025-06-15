@@ -1,9 +1,9 @@
-Add-Type -AssemblyName System.Windows.Forms
+ï»¿Add-Type -AssemblyName System.Windows.Forms
 
-# ˆø”ƒ`ƒFƒbƒNFˆø”‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍƒƒbƒZ[ƒWƒ{ƒbƒNƒX‚ğ•\¦‚µ‚ÄI—¹
+# å¼•æ•°ãƒã‚§ãƒƒã‚¯ï¼šå¼•æ•°ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã‚’è¡¨ç¤ºã—ã¦çµ‚äº†
 if ($Args.Count -eq 0) {
-    $NoArgsMsg = "ƒtƒ@ƒCƒ‹‚ª‘I‘ğ‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB"
-    [System.Windows.Forms.MessageBox]::Show($NoArgsMsg, "ƒGƒ‰[", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+    $NoArgsMsg = "ãƒ•ã‚¡ã‚¤ãƒ«ãŒé¸æŠã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"
+    [System.Windows.Forms.MessageBox]::Show($NoArgsMsg, "ã‚¨ãƒ©ãƒ¼", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
     exit
 }
 
@@ -14,8 +14,8 @@ $ProcessedCount = 0
 
 foreach ($FilePath in $Args) {
     if ((Get-Item $FilePath).PSIsContainer) {
-        $WarningMsg = "ƒfƒBƒŒƒNƒgƒŠ‚ÍƒXƒLƒbƒv‚³‚ê‚Ü‚µ‚½:`n$FilePath`n`nƒtƒ@ƒCƒ‹‚Ì‚İ‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢B"
-        [System.Windows.Forms.MessageBox]::Show($WarningMsg, "Œx", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Warning)
+        $WarningMsg = "ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¯ã‚¹ã‚­ãƒƒãƒ—ã•ã‚Œã¾ã—ãŸ:`n$FilePath`n`nãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ã‚’é¸æŠã—ã¦ãã ã•ã„ã€‚"
+        [System.Windows.Forms.MessageBox]::Show($WarningMsg, "è­¦å‘Š", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Warning)
         continue
     }
 
@@ -25,15 +25,15 @@ foreach ($FilePath in $Args) {
     if ($supportedExtensions.Contains($Extension)) {
         $OutputDir = Join-Path $FileItem.DirectoryName "webp_output"
         
-        # webp_outputƒtƒHƒ‹ƒ_‚ª‘¶İ‚µ‚È‚¢ê‡‚Íì¬
+        # webp_outputãƒ•ã‚©ãƒ«ãƒ€ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ä½œæˆ
         if (-not (Test-Path $OutputDir)) {
             try {
                 New-Item -ItemType Directory -Path $OutputDir -Force | Out-Null
                 Write-Output "Created output directory: $OutputDir"
             } catch {
-                Write-Output "Error: webp_outputƒtƒHƒ‹ƒ_‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½"
-                Write-Output "ƒpƒX: $OutputDir"
-                Write-Output "Ú×: $($_.Exception.Message)"
+                Write-Output "Error: webp_outputãƒ•ã‚©ãƒ«ãƒ€ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"
+                Write-Output "ãƒ‘ã‚¹: $OutputDir"
+                Write-Output "è©³ç´°: $($_.Exception.Message)"
                 $ErrorFileName += $FileItem.Name
                 continue
             }
@@ -53,20 +53,20 @@ foreach ($FilePath in $Args) {
             $ErrorCategory = $_.CategoryInfo.Category
             $ErrorType = $_.Exception.GetType().Name
             
-            Write-Output "Error: ƒtƒ@ƒCƒ‹‚Ì•ÏŠ·’†‚ÉƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½"
-            Write-Output "ƒtƒ@ƒCƒ‹: $($FileItem.Name)"
-            Write-Output "ƒGƒ‰[ƒ^ƒCƒv: $ErrorType"
-            Write-Output "ƒGƒ‰[ƒJƒeƒSƒŠ: $ErrorCategory"
-            Write-Output "Ú×: $ErrorDetails"
+            Write-Output "Error: ãƒ•ã‚¡ã‚¤ãƒ«ã®å¤‰æ›ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ"
+            Write-Output "ãƒ•ã‚¡ã‚¤ãƒ«: $($FileItem.Name)"
+            Write-Output "ã‚¨ãƒ©ãƒ¼ã‚¿ã‚¤ãƒ—: $ErrorType"
+            Write-Output "ã‚¨ãƒ©ãƒ¼ã‚«ãƒ†ã‚´ãƒª: $ErrorCategory"
+            Write-Output "è©³ç´°: $ErrorDetails"
             
             $ErrorFileName += $FileItem.Name
         }
         
     } else {
-        Write-Output "Unsupported: ƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚È‚¢ƒtƒ@ƒCƒ‹Œ`®‚Å‚·"
-        Write-Output "ƒtƒ@ƒCƒ‹: $($FileItem.Name)"
-        Write-Output "Šg’£q: $Extension"
-        Write-Output "‘Î‰Œ`®: .jpg, .jpeg, .png"
+        Write-Output "Unsupported: ã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„ãƒ•ã‚¡ã‚¤ãƒ«å½¢å¼ã§ã™"
+        Write-Output "ãƒ•ã‚¡ã‚¤ãƒ«: $($FileItem.Name)"
+        Write-Output "æ‹¡å¼µå­: $Extension"
+        Write-Output "å¯¾å¿œå½¢å¼: .jpg, .jpeg, .png"
         $ErrorFileName += $FileItem.Name
     }
     
@@ -74,9 +74,9 @@ foreach ($FilePath in $Args) {
 }
 
 if ($ErrorFileName.Count -gt 0) {
-    $PartialMsg = "ˆ—‚ªŠ®—¹‚µ‚Ü‚µ‚½‚ªA•ÏŠ·‚É¸”s‚µ‚½ƒtƒ@ƒCƒ‹‚ª‚ ‚è‚Ü‚·B`n`n¬Œ÷: $ProcessedCount ƒtƒ@ƒCƒ‹`n¸”s‚Ü‚½‚ÍƒXƒLƒbƒv: $($ErrorFileName.Count) ƒtƒ@ƒCƒ‹`n`n–â‘è‚Ì‚ ‚Á‚½ƒtƒ@ƒCƒ‹:`n$($ErrorFileName -join "`n")"
-    [System.Windows.Forms.MessageBox]::Show($PartialMsg, "Webp•ÏŠ·•”•ªŠ®—¹", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Warning)
+    $PartialMsg = "å‡¦ç†ãŒå®Œäº†ã—ã¾ã—ãŸãŒã€å¤‰æ›ã«å¤±æ•—ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚Šã¾ã™ã€‚`n`næˆåŠŸ: $ProcessedCount ãƒ•ã‚¡ã‚¤ãƒ«`nå¤±æ•—ã¾ãŸã¯ã‚¹ã‚­ãƒƒãƒ—: $($ErrorFileName.Count) ãƒ•ã‚¡ã‚¤ãƒ«`n`nå•é¡Œã®ã‚ã£ãŸãƒ•ã‚¡ã‚¤ãƒ«:`n$($ErrorFileName -join "`n")"
+    [System.Windows.Forms.MessageBox]::Show($PartialMsg, "Webpå¤‰æ›éƒ¨åˆ†å®Œäº†", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Warning)
 } else {
-    $CompletedMsg = "‚·‚×‚Ä‚Ì•ÏŠ·‚ªŠ®—¹‚µ‚Ü‚µ‚½B`n`n•ÏŠ·‚³‚ê‚½ƒtƒ@ƒCƒ‹”: $ProcessedCount"
-    [System.Windows.Forms.MessageBox]::Show($CompletedMsg, "Webp•ÏŠ·Š®—¹", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)
+    $CompletedMsg = "ã™ã¹ã¦ã®å¤‰æ›ãŒå®Œäº†ã—ã¾ã—ãŸã€‚`n`nå¤‰æ›ã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«æ•°: $ProcessedCount"
+    [System.Windows.Forms.MessageBox]::Show($CompletedMsg, "Webpå¤‰æ›å®Œäº†", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)
 }
