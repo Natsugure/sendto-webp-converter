@@ -3,7 +3,7 @@ Windows環境で画像ファイルを簡単にWebP形式に変換するPowerShel
 
 ## 機能
 - 複数の画像ファイルを一括でWebP形式に変換
-- Windows エクスプローラーの右クリックメニューから直接実行
+- Windows エクスプローラーの右クリックの「送る」メニューから直接実行
 
 ## 対応ファイル形式
 - JPEG (.jpg, .jpeg)
@@ -13,30 +13,26 @@ Windows環境で画像ファイルを簡単にWebP形式に変換するPowerShel
 ## 必要な環境
 - Windows 10/11
 - PowerShell 5.1以上
-- Google WebP Tools（cwebp.exe）
 
-## 使用方法
-### 1. Google WebP Toolsのインストール
-1. 以下のURLから最新版をダウンロード
-https://developers.google.com/speed/webp/docs/precompiled?hl=ja
-
-2. 展開した中身を任意のフォルダに配置（例：C:\Tools\webp\）
-3. cwebp.exeのパスを環境変数PATHに追加
-
-### 2. このリポジトリを`git clone`またはダウンロード
+## インストール方法
+### 1. このリポジトリを`git clone`またはダウンロード
 
 ```
 git clone https://github.com/Natsugure/sendto-webp-converter.git
 ```
 
-### 3. 「送る」メニューにバッチファイルを登録する
-エクスプローラのアドレスバーに`shell:sendto`を入力して移動。
+### 2. install.batを実行する
+`install.bat`をダブルクリックして実行すると、sendtoフォルダにショートカットが作成され、「送る」メニューに「WebPに変換」が追加されます。
 
-`scripts\sendto_webp_converter_laucher.bat`のショートカットを作成する。
+## 使用方法
+1. 画像ファイル(JPG/PNG/TIFF)を右クリック（複数選択可）
+2. 「送る」→「WebPに変換」を選択
+3. 変換されたファイルは同じフォルダの「webp_output」に保存されます
 
-`.lnk`のファイル名が「送る」メニュー内の表示名になるので、任意の名前に変更する。（例：WebPに変換）
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### 4. 画像ファイルを選択して、「送る」メニューからスクリプトを起動する
+### Third-party Components
 
-## ライセンス
-MIT License
+This project includes third-party software components:
+- `bin/cwebp.exe`: BSD 3-Clause License (Google Inc.) - see [NOTICE.txt](NOTICE.txt) for details
